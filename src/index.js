@@ -1,21 +1,22 @@
 import './style.css';
+
 const tasksContainer = document.querySelector('.tasks-list');
 
-let tasksArr = [
+const tasksArr = [
   {
-    description: "Note description",
+    description: 'Note description',
     completed: false,
-    index: 0
+    index: 0,
   },
   {
-    description: "Play COD",
+    description: 'Play COD',
     completed: false,
-    index: 1
+    index: 1,
   },
   {
-    description: "Go through JS docs",
+    description: 'Go through JS docs',
     completed: false,
-    index: 2
+    index: 2,
   }
 ];
 
