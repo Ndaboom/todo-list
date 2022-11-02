@@ -24,16 +24,11 @@ To get a local copy up and running follow these simple example steps.
 - PC with a browser and Internet
 - [Node.js](https://nodejs.org/en/download) installed
 ### Setup
-
-### Install
-npm install
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+- git clone [repo](https://github.com/Ndaboom/todo-list.git)
+- cd Todo-List
+- code .
+- run npm install
+- run npm start
 
 ## Authors
 
