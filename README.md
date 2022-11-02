@@ -25,7 +25,7 @@ To get a local copy up and running follow these simple example steps.
 - [Node.js](https://nodejs.org/en/download) installed
 ### Setup
 - git clone [repo](https://github.com/Ndaboom/todo-list.git)
-- cd Todo-List
+- cd todo-list
 - code .
 - run npm install
 - run npm start
