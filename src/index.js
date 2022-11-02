@@ -17,7 +17,7 @@ const tasksArr = [
     description: 'Go through JS docs',
     completed: false,
     index: 2,
-  }
+  },
 ];
 
 function populateUI(currentTask) {
