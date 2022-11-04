@@ -23,13 +23,13 @@ class Tasks {
     const taskDescription = document.createElement('p');
     taskDescription.innerHTML = currentTask.description;
     taskDescription.setAttribute('id', 'task-description');
-    taskDescription.addEventListener('click', (e) => {
+    taskDescription.addEventListener('click', () => {
       // Chnage next element visibility to visible
       taskDescription.classList.add('hidden');
       taskDescription.nextSibling.classList.remove('hidden');
       taskDescription.nextSibling.value = currentTask.description;
-      taskDescription.nextSibling.addEventListener('blur', (e) => {
-        this.updateTask(currentTask.index, taskDescription.nextSibling.value)
+      taskDescription.nextSibling.addEventListener('blur', () => {
+        this.updateTask(currentTask.index, taskDescription.nextSibling.value);
       });
     });
     task.appendChild(taskDescription);
@@ -76,8 +76,8 @@ class Tasks {
   updateTask(index, description) {
     this.index = index;
     this.description = description;
-    var foundIndex = tasksArr.findIndex(x => x.index == this.index);
-    tasksArr[foundIndex] = {'description':this.description, 'completed':false, 'index':this.index};
+    const foundIndex = tasksArr.findIndex((x) => x.index === this.index);
+    tasksArr[foundIndex] = { description:this.description, completed:false, index:this.index };
     localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
     window.location.reload();
   }
