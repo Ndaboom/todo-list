@@ -93,6 +93,12 @@ class Tasks {
     localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
     window.location.reload();
   }
+
+  removeAllCompleted() {
+    const updatedArray = tasksArr.filter((item) => item.completed !== true);
+    localStorage.setItem('tasksArr', JSON.stringify(updatedArray));
+    window.location.reload();
+  }
 }
 
 let tasks = new Tasks();
@@ -108,15 +114,7 @@ addTask.addEventListener('click', () => {
 
 deleteCompleted.addEventListener('click', (e) => {
   e.preventDefault();
-  let counter = 0;
-  tasksArr.forEach((task) => {
-    if (task.completed) {
-      tasksArr.splice(counter, 1);
-      localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
-    }
-    counter += 1;
-  });
-  window.location.reload();
+  tasks.removeAllCompleted();
 });
 
 export default tasks = new Tasks();
