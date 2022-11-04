@@ -46,6 +46,10 @@
   padding-right: 15px;
 }
 
+.task span {
+  cursor: pointer;
+}
+
 .line {
   padding: 20px;
 }

@@ -10,6 +10,7 @@ class Tasks {
 
     // Task list selector
     this.tasksContainer = document.querySelector('.tasks-list');
+    console.log("Current array state", tasksArr);
   }
 
   populateTaskUI(currentTask) {
@@ -18,10 +19,14 @@ class Tasks {
     task.innerHTML = `
             <input type="checkbox" />
             <p>${currentTask.description}</p>
-            <span class="material-symbols-outlined">
-                list
-            </span>
     `;
+    const deleteBtn = document.createElement('span');
+    deleteBtn.className = 'material-symbols-outlined';
+    deleteBtn.innerHTML = 'delete';
+    deleteBtn.addEventListener('click', () => {
+    this.removeTask(currentTask.index);
+    });
+    task.appendChild(deleteBtn);
     this.tasksContainer.appendChild(task);
   }
 
@@ -34,6 +39,18 @@ class Tasks {
   addTask() {
     tasksArr.push(this);
     localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
+    window.location.reload();
+  }
+
+  removeTask(index) {
+    this.index = index;
+    let currentIndex = 0;
+    const updatedList = tasksArr.filter((item) => item.index !== this.index);
+    updatedList.forEach((task) => {
+      task.index = currentIndex;
+      currentIndex++;    
+    });
+    localStorage.setItem('tasksArr', JSON.stringify(updatedList));
     window.location.reload();
   }
 }
