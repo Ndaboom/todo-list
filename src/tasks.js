@@ -1,4 +1,4 @@
-export default class Tasks {
+class Tasks {
   constructor(index, description, completed) {
     this.index = index;
     this.description = description;
@@ -45,3 +45,6 @@ export default class Tasks {
     });
   }
 }
+
+const tasks = new Tasks();
+export default tasks;

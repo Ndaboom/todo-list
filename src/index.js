@@ -1,5 +1,4 @@
 import './style.css';
-import Tasks from './tasks';
+import tasks from './tasks';
 
-Tasks = new Tasks();
-Tasks.readTasks();
+tasks.readTasks();
