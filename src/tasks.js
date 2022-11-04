@@ -1,28 +1,14 @@
+// Add task button
+const addTask = document.querySelector('#add_task');
+const inputDesc = document.querySelector('#task_description');
+const tasksArr = JSON.parse(localStorage.getItem('tasksArr')) || [];;
 class Tasks {
-  constructor(index, description, completed) {
+  constructor(description, completed, index) {
     this.index = index;
     this.description = description;
     this.completed = completed;
 
-    // For tasks rendering
-    this.tasksArr = [
-      {
-        description: 'Note description',
-        completed: false,
-        index: 0,
-      },
-      {
-        description: 'Play COD',
-        completed: false,
-        index: 1,
-      },
-      {
-        description: 'Go through JS docs',
-        completed: false,
-        index: 2,
-      },
-    ];
-
+    // Task list selector
     this.tasksContainer = document.querySelector('.tasks-list');
   }
 
@@ -40,11 +26,27 @@ class Tasks {
   }
 
   readTasks() {
-    this.tasksArr.forEach((task) => {
+    tasksArr.forEach((task) => {
       this.populateTaskUI(task);
     });
   }
+
+  addTask() {
+    tasksArr.push(this);
+    localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
+    window.location.reload();
+  }
 }
 
-const tasks = new Tasks();
+let tasks = new Tasks();
+
+addTask.addEventListener('click', () => {
+    if(inputDesc.value) {
+      const currentId = tasksArr.length;
+      // Insert the task
+      tasks = new Tasks(inputDesc.value, false, currentId);
+      tasks.addTask();
+    }
+});
+
 export default tasks;
