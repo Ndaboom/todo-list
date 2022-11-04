@@ -24,24 +24,24 @@ export default class Tasks {
     ];
 
     this.tasksContainer = document.querySelector('.tasks-list');
-    }
+  }
 
-    populateTaskUI(currentTask) {
-      const task = document.createElement('div');
-      task.className = 'task';
-      task.innerHTML = `
+  populateTaskUI(currentTask) {
+    const task = document.createElement('div');
+    task.className = 'task';
+    task.innerHTML = `
             <input type="checkbox" />
             <p>${currentTask.description}</p>
             <span class="material-symbols-outlined">
                 list
             </span>
-      `;
-      this.tasksContainer.appendChild(task);
-    }
+    `;
+    this.tasksContainer.appendChild(task);
+  }
 
-    readTasks() {
-      this.tasksArr.forEach((task) => {
-        this.populateTaskUI(task);
-      });
-    }
+  readTasks() {
+    this.tasksArr.forEach((task) => {
+      this.populateTaskUI(task);
+    });
+  }
 }
