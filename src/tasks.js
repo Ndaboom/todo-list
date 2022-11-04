@@ -88,7 +88,7 @@ let tasks = new Tasks();
 
 addTask.addEventListener('click', () => {
   if (inputDesc.value) {
-    let currentId = tasksArr.length + 1;
+    const currentId = tasksArr.length + 1;
     // Insert the task
     tasks = new Tasks(inputDesc.value, false, currentId);
     tasks.addTask();
