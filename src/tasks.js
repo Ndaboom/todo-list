@@ -77,7 +77,7 @@ class Tasks {
     this.index = index;
     this.description = description;
     const foundIndex = tasksArr.findIndex((x) => x.index === this.index);
-    tasksArr[foundIndex] = { description:this.description, completed:false, index:this.index };
+    tasksArr[foundIndex] = { description: this.description, completed: false, index: this.index };
     localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
     window.location.reload();
   }
