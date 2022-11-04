@@ -10,7 +10,6 @@ class Tasks {
 
     // Task list selector
     this.tasksContainer = document.querySelector('.tasks-list');
-    console.log("Current array state", tasksArr);
   }
 
   populateTaskUI(currentTask) {
@@ -24,7 +23,7 @@ class Tasks {
     deleteBtn.className = 'material-symbols-outlined';
     deleteBtn.innerHTML = 'delete';
     deleteBtn.addEventListener('click', () => {
-    this.removeTask(currentTask.index);
+      this.removeTask(currentTask.index);
     });
     task.appendChild(deleteBtn);
     this.tasksContainer.appendChild(task);
@@ -48,7 +47,7 @@ class Tasks {
     const updatedList = tasksArr.filter((item) => item.index !== this.index);
     updatedList.forEach((task) => {
       task.index = currentIndex;
-      currentIndex++;    
+      currentIndex += 1;
     });
     localStorage.setItem('tasksArr', JSON.stringify(updatedList));
     window.location.reload();
