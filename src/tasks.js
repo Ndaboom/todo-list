@@ -15,10 +15,30 @@ class Tasks {
   populateTaskUI(currentTask) {
     const task = document.createElement('div');
     task.className = 'task';
-    task.innerHTML = `
-            <input type="checkbox" />
-            <p>${currentTask.description}</p>
-    `;
+    // Check-box
+    const checkBox = document.createElement('input');
+    checkBox.setAttribute('type', 'checkbox');
+    task.appendChild(checkBox);
+    // P tag
+    const taskDescription = document.createElement('p');
+    taskDescription.innerHTML = currentTask.description;
+    taskDescription.setAttribute('id', 'task-description');
+    taskDescription.addEventListener('click', (e) => {
+      // Chnage next element visibility to visible
+      taskDescription.classList.add('hidden');
+      taskDescription.nextSibling.classList.remove('hidden');
+      taskDescription.nextSibling.value = currentTask.description;
+      taskDescription.nextSibling.addEventListener('blur', (e) => {
+        this.updateTask(currentTask.index, taskDescription.nextSibling.value)
+      });
+    });
+    task.appendChild(taskDescription);
+    // Edit text
+    const taskEditText = document.createElement('input');
+    taskEditText.classList = 'hidden';
+    taskEditText.setAttribute('type', 'text');
+    task.appendChild(taskEditText);
+    // Delete button
     const deleteBtn = document.createElement('span');
     deleteBtn.className = 'material-symbols-outlined';
     deleteBtn.innerHTML = 'delete';
@@ -50,6 +70,15 @@ class Tasks {
       currentIndex += 1;
     });
     localStorage.setItem('tasksArr', JSON.stringify(updatedList));
+    window.location.reload();
+  }
+
+  updateTask(index, description) {
+    this.index = index;
+    this.description = description;
+    var foundIndex = tasksArr.findIndex(x => x.index == this.index);
+    tasksArr[foundIndex] = {'description':this.description, 'completed':false, 'index':this.index};
+    localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
     window.location.reload();
   }
 }
