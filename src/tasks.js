@@ -1,7 +1,7 @@
 // Add task button
 const addTask = document.querySelector('#add_task');
 const inputDesc = document.querySelector('#task_description');
-const tasksArr = JSON.parse(localStorage.getItem('tasksArr')) || [];;
+const tasksArr = JSON.parse(localStorage.getItem('tasksArr')) || [];
 class Tasks {
   constructor(description, completed, index) {
     this.index = index;
@@ -41,12 +41,12 @@ class Tasks {
 let tasks = new Tasks();
 
 addTask.addEventListener('click', () => {
-    if(inputDesc.value) {
-      const currentId = tasksArr.length;
-      // Insert the task
-      tasks = new Tasks(inputDesc.value, false, currentId);
-      tasks.addTask();
-    }
+  if(inputDesc.value) {
+    const currentId = tasksArr.length;
+    // Insert the task
+    tasks = new Tasks(inputDesc.value, false, currentId);
+    tasks.addTask();
+  }
 });
 
-export default tasks;
+export default tasks = new Tasks;
