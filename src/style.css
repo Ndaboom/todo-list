@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 .container {
   width: 100%;
   text-align: center;
@@ -26,7 +30,6 @@
 
 .add-task input {
   border: none;
-  height: 20px;
 }
 
 .border-bottom {
@@ -47,8 +50,20 @@
   padding-right: 15px;
 }
 
+.task span {
+  cursor: pointer;
+}
+
+.task p {
+  cursor: pointer;
+}
+
 .line {
   padding: 20px;
+}
+
+.editText {
+  border: none;
 }
 
 .complete-all {
