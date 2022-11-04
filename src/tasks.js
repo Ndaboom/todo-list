@@ -1,4 +1,4 @@
-import { checker, updateTaskStatus } from "./status-checker";
+import { checker, updateTaskStatus } from './status-checker';
 
 // Add task button
 const addTask = document.querySelector('#add_task');
@@ -23,17 +23,21 @@ class Tasks {
     checkBox.setAttribute('type', 'checkbox');
     checkBox.addEventListener('change', () => {
       // Update tasks status
-      updateTaskStatus(currentTask.description, currentTask.completed, currentTask.index);    
+      updateTaskStatus(currentTask.description, currentTask.completed, currentTask.index);
     });
-    if(currentTask.completed){
-        checkBox.checked = true;
+    if (checker(currentTask.completed)) {
+      checkBox.checked = true;
     }
     task.appendChild(checkBox);
     // P tag
     const taskDescription = document.createElement('p');
     taskDescription.innerHTML = currentTask.description;
     taskDescription.setAttribute('id', 'task-description');
-    currentTask.completed ? taskDescription.classList = 'line-through' : taskDescription.classList = '';
+    if (currentTask.completed) {
+      taskDescription.classList = 'line-through';
+    } else {
+      taskDescription.classList = '';
+    }
     taskDescription.addEventListener('click', () => {
       // Chnage next element visibility to visible
       taskDescription.classList.add('hidden');
@@ -93,15 +97,15 @@ class Tasks {
     localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
     window.location.reload();
   }
-
-  removeAllCompleted() {
-    const updatedArray = tasksArr.filter((item) => item.completed !== true);
-    localStorage.setItem('tasksArr', JSON.stringify(updatedArray));
-    window.location.reload();
-  }
 }
 
 let tasks = new Tasks();
+
+function removeAllCompleted() {
+  const updatedArray = tasksArr.filter((item) => item.completed !== true);
+  localStorage.setItem('tasksArr', JSON.stringify(updatedArray));
+  window.location.reload();
+}
 
 addTask.addEventListener('click', () => {
   if (inputDesc.value) {
@@ -114,7 +118,7 @@ addTask.addEventListener('click', () => {
 
 deleteCompleted.addEventListener('click', (e) => {
   e.preventDefault();
-  tasks.removeAllCompleted();
+  removeAllCompleted();
 });
 
 export default tasks = new Tasks();
