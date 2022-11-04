@@ -9,7 +9,7 @@ function checker(state) {
 
 function updateTaskStatus(description, completed, index) {
   const foundIndex = tasksArr.findIndex((x) => x.index === index);
-  tasksArr[foundIndex] = { description: description, completed: !completed, index: index };
+  tasksArr.splice(foundIndex, 1, { description: description, completed: !completed, index: index });
   localStorage.setItem('tasksArr', JSON.stringify(tasksArr));
   window.location.reload();
 }
