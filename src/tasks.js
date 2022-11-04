@@ -64,7 +64,7 @@ class Tasks {
 
   removeTask(index) {
     this.index = index;
-    let currentIndex = 0;
+    let currentIndex = 1;
     const updatedList = tasksArr.filter((item) => item.index !== this.index);
     updatedList.forEach((task) => {
       task.index = currentIndex;
@@ -88,7 +88,7 @@ let tasks = new Tasks();
 
 addTask.addEventListener('click', () => {
   if (inputDesc.value) {
-    const currentId = tasksArr.length;
+    let currentId = tasksArr.length + 1;
     // Insert the task
     tasks = new Tasks(inputDesc.value, false, currentId);
     tasks.addTask();
