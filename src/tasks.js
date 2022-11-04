@@ -36,7 +36,7 @@ class Tasks {
     task.appendChild(taskDescription);
     // Edit text
     const taskEditText = document.createElement('input');
-    taskEditText.classList.add('hidden','editText');
+    taskEditText.classList.add('hidden', 'editText');
     taskEditText.setAttribute('type', 'text');
     task.appendChild(taskEditText);
     // Delete button
