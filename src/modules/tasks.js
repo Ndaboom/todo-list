@@ -1,6 +1,9 @@
+import { checker, updateTaskStatus } from './status-checker';
+
 // Add task button
 const addTask = document.querySelector('#add_task');
 const inputDesc = document.querySelector('#task_description');
+const deleteCompleted = document.querySelector('.delete-completed');
 const tasksArr = JSON.parse(localStorage.getItem('tasksArr')) || [];
 class Tasks {
   constructor(description, completed, index) {
@@ -18,11 +21,23 @@ class Tasks {
     // Check-box
     const checkBox = document.createElement('input');
     checkBox.setAttribute('type', 'checkbox');
+    checkBox.addEventListener('change', () => {
+      // Update tasks status
+      updateTaskStatus(currentTask.description, currentTask.completed, currentTask.index);
+    });
+    if (checker(currentTask.completed)) {
+      checkBox.checked = true;
+    }
     task.appendChild(checkBox);
     // P tag
     const taskDescription = document.createElement('p');
     taskDescription.innerHTML = currentTask.description;
     taskDescription.setAttribute('id', 'task-description');
+    if (currentTask.completed) {
+      taskDescription.classList = 'line-through';
+    } else {
+      taskDescription.classList = '';
+    }
     taskDescription.addEventListener('click', () => {
       // Chnage next element visibility to visible
       taskDescription.classList.add('hidden');
@@ -86,6 +101,12 @@ class Tasks {
 
 let tasks = new Tasks();
 
+function removeAllCompleted() {
+  const updatedArray = tasksArr.filter((item) => item.completed !== true);
+  localStorage.setItem('tasksArr', JSON.stringify(updatedArray));
+  window.location.reload();
+}
+
 addTask.addEventListener('click', () => {
   if (inputDesc.value) {
     const currentId = tasksArr.length + 1;
@@ -93,6 +114,11 @@ addTask.addEventListener('click', () => {
     tasks = new Tasks(inputDesc.value, false, currentId);
     tasks.addTask();
   }
+});
+
+deleteCompleted.addEventListener('click', (e) => {
+  e.preventDefault();
+  removeAllCompleted();
 });
 
 export default tasks = new Tasks();

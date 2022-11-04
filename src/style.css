@@ -2,6 +2,10 @@
   display: none;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
 .container {
   width: 100%;
   text-align: center;
