@@ -41,7 +41,7 @@ class Tasks {
 let tasks = new Tasks();
 
 addTask.addEventListener('click', () => {
-  if(inputDesc.value) {
+  if (inputDesc.value) {
     const currentId = tasksArr.length;
     // Insert the task
     tasks = new Tasks(inputDesc.value, false, currentId);
@@ -49,4 +49,4 @@ addTask.addEventListener('click', () => {
   }
 });
 
-export default tasks = new Tasks;
+export default tasks = new Tasks();
