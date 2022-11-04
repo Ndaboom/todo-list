@@ -11,9 +11,9 @@
 - CSS
 - Javascript
 
-## Live Demo (if available)
+## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://ndaboom.github.io/todo-list/dist/)
 
 
 ## Getting Started
