@@ -1,4 +1,4 @@
 import './style.css';
-import tasks from './tasks';
+import tasks from './modules/tasks';
 
 tasks.readTasks();

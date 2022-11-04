@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 const tasksArr = JSON.parse(localStorage.getItem('tasksArr')) || [];
 
 function checker(state) {
