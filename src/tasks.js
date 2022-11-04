@@ -28,6 +28,7 @@ class Tasks {
       taskDescription.classList.add('hidden');
       taskDescription.nextSibling.classList.remove('hidden');
       taskDescription.nextSibling.value = currentTask.description;
+      taskDescription.nextSibling.focus();
       taskDescription.nextSibling.addEventListener('blur', () => {
         this.updateTask(currentTask.index, taskDescription.nextSibling.value);
       });
@@ -35,7 +36,7 @@ class Tasks {
     task.appendChild(taskDescription);
     // Edit text
     const taskEditText = document.createElement('input');
-    taskEditText.classList = 'hidden';
+    taskEditText.classList.add('hidden','editText');
     taskEditText.setAttribute('type', 'text');
     task.appendChild(taskEditText);
     // Delete button

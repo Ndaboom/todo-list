@@ -62,6 +62,10 @@
   padding: 20px;
 }
 
+.editText {
+  border: none;
+}
+
 .complete-all {
   padding: 20px;
   background-color: rgb(207, 203, 203);
